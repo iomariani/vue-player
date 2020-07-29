@@ -127,6 +127,10 @@ export default {
 		seekerColor: {
 			type: String,
 			default: '#2f96fd'
+		},
+		exclusive: {
+			type: Boolean,
+			default: true
 		}
 	},
 	data() {
@@ -198,13 +202,15 @@ export default {
 			if (e.type === 'pause') {
 				this.status = 'paused'
 			} else if (e.type === 'play') {
-				const players = document.getElementsByClassName('con-player status-playing')
+				if (this.exclusive) {
+					const players = document.getElementsByClassName('player status-playing')
 
-				players.forEach(player => {
-					let media = player.getElementsByClassName('media')[0]
+					players.forEach(player => {
+						let media = player.getElementsByClassName('media')[0]
 
-					if (media.tagName === 'AUDIO' || media.tagName === 'VIDEO') media.pause()
-				})
+						if (media.tagName === 'AUDIO' || media.tagName === 'VIDEO') media.pause()
+					})
+				}
 
 				this.status = 'playing'
 			}
