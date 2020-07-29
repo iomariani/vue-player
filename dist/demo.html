@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<title>vue-player demo</title>
+<script src="https://unpkg.com/vue"></script>
+<script src="./vue-player.umd.js"></script>
+
+<link rel="stylesheet" href="./vue-player.css">
+
+
+<div id="app">
+  <demo></demo>
+</div>
+
+<script>
+new Vue({
+  components: {
+    demo: vue-player
+  }
+}).$mount('#app')
+</script>
