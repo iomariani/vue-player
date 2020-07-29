@@ -1,8 +1,8 @@
 <template>
-	<div class="player" :class="{ [`${type}-player`]: true, [`status-${status}`]: true }">
+	<div class="player" :class="{ 'audio-player': audio, 'video-player': video, [`status-${status}`]: true }">
 		<div class="player-wrapper">
 			<audio
-				v-if="type === 'audio'"
+				v-if="audio === true"
 				preload="auto"
 				:autoplay="autoPlay"
 				:loop="loop"
@@ -20,7 +20,7 @@
 			</audio>
 
 			<video
-				v-if="type === 'video'"
+				v-if="video === true"
 				:width="videoWidth"
 				:height="videoHeight"
 				preload="auto"
@@ -90,9 +90,13 @@ export default {
 		FullscreenIcon
 	},
 	props: {
-		type: {
-			type: String,
-			default: 'audio'
+		audio: {
+			type: Boolean,
+			default: false
+		},
+		video: {
+			type: Boolean,
+			default: false
 		},
 		sources: {
 			type: Object
