@@ -5,6 +5,23 @@ $dark-color: #181818;
 	border-radius: 20px;
 	box-shadow: 0 2px 10px rgba(10, 10, 10, 0.2);
 
+	.player-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100vw;
+		height: 100vh;
+		backdrop-filter: blur(3px);
+		background-color: rgba(0, 0, 0, 0.9);
+		z-index: 1000;
+
+		+ .player-wrapper {
+			z-index: 1001;
+		}
+	}
+
 	.player-wrapper {
 		-webkit-mask-image: -webkit-radial-gradient(white, black);
 		mask-image: linear-gradient(white, black);
@@ -106,6 +123,14 @@ $dark-color: #181818;
 }
 
 .audio-player {
+	&.theater {
+		&.status-playing {
+			.player-wrapper {
+				background-color: rgba(255, 255, 255, 0.9);
+			}
+		}
+	}
+
 	.player-controls {
 		min-height: 20px;
 		padding: 5px 15px 5px 5px;
@@ -247,4 +272,13 @@ $dark-color: #181818;
 			}
 		}
 	}
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+	opacity: 0;
 }

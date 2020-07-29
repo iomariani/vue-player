@@ -4,7 +4,7 @@
 
 		<div class="container">
 			<vue-player audio :sources="audioSources" />
-			<vue-player video :sources="videoSources" />
+			<vue-player video theater :sources="videoSources" />
 		</div>
 	</div>
 </template>
