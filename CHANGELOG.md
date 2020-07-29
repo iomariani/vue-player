@@ -7,9 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Custom Fullscreen
+
+## [0.2.0] - 2020-07-29
+
+### Released
+
 - Theater Mode
 - Exclusive Mode
-- Custom Fullscreen
 
 ## [0.1.2] - 2020-07-29
 
@@ -48,7 +53,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First release bundle
 
-[unreleased]: https://github.com/iomariani/vue-player/compare/v0.1.2...HEAD
+[unreleased]: https://github.com/iomariani/vue-player/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/iomariani/vue-player/releases/tag/v0.2.0
 [0.1.2]: https://github.com/iomariani/vue-player/releases/tag/v0.1.2
 [0.1.1]: https://github.com/iomariani/vue-player/releases/tag/v0.1.1
 [0.1.0]: https://github.com/iomariani/vue-player/releases/tag/v0.1.0
