@@ -1,28 +1,67 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div id="app">
+		<img alt="Vue logo" src="./assets/logo.png" />
+
+		<h1>Vue.js Audio/Video Player</h1>
+
+		<div class="container">
+			<vue-player audio :sources="audioSources" />
+
+			<vue-player video :sources="videoSources" />
+		</div>
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import VuePlayer from './components/VuePlayer.vue'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+	name: 'App',
+	components: {
+		VuePlayer
+	},
+	data() {
+		return {
+			audioSources: {
+				'audio/mp3': 'https://www.bensound.com/bensound-music/bensound-scifi.mp3'
+			},
+			videoSources: {
+				'video/mp4': 'https://mdn.github.io/learning-area/javascript/apis/video-audio/finished/video/sintel-short.mp4',
+				'video/webm': 'https://mdn.github.io/learning-area/javascript/apis/video-audio/finished/video/sintel-short.webm'
+			}
+		}
+	}
 }
 </script>
 
-<style>
+<style lang="scss">
+.container {
+	width: 500px;
+	margin: 0 auto;
+
+	.player {
+		margin-bottom: 2em;
+	}
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: center;
+
+	.col {
+		width: 25%;
+		margin: 0 2em;
+	}
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+	font-family: Avenir, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: #2c3e50;
+	margin-top: 60px;
 }
 </style>
