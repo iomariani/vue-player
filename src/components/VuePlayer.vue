@@ -1,8 +1,8 @@
 <template>
-	<div class="player" :class="{ 'audio-player': audio, 'video-player': video, [`status-${status}`]: true }">
+	<div class="player" :class="{ [`${type}-player`]: true, [`status-${status}`]: true }">
 		<div class="player-wrapper">
 			<audio
-				v-if="audio === true"
+				v-if="type === 'audio'"
 				preload="auto"
 				:autoplay="autoPlay"
 				:loop="loop"
@@ -20,7 +20,7 @@
 			</audio>
 
 			<video
-				v-if="video === true"
+				v-if="type === 'video'"
 				:width="videoWidth"
 				:height="videoHeight"
 				preload="auto"
@@ -90,13 +90,9 @@ export default {
 		FullscreenIcon
 	},
 	props: {
-		audio: {
-			type: Boolean,
-			default: false
-		},
-		video: {
-			type: Boolean,
-			default: false
+		type: {
+			type: String,
+			default: 'audio'
 		},
 		sources: {
 			type: Object
@@ -136,11 +132,6 @@ export default {
 			duration: 0,
 			buffered: 0,
 			progress: 0
-		}
-	},
-	computed: {
-		isAudio() {
-			return this.audio.length > 0
 		}
 	},
 	methods: {
@@ -251,11 +242,6 @@ export default {
 
 			if (dt.getUTCHours() == 0) return time.substring(3)
 			else return time
-		}
-	},
-	created() {
-		if (!this.audio && !this.video) {
-			throw new Error('Audio/video prop must me specified.')
 		}
 	}
 }
