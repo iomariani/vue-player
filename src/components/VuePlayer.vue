@@ -205,11 +205,7 @@ export default {
 				if (this.exclusive) {
 					const players = document.getElementsByClassName('player status-playing')
 
-					players.forEach(player => {
-						let media = player.getElementsByClassName('media')[0]
-
-						if (media.tagName === 'AUDIO' || media.tagName === 'VIDEO') media.pause()
-					})
+					players.forEach(player => player.getElementsByClassName('media')[0].pause())
 				}
 
 				this.status = 'playing'
