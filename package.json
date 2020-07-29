@@ -28,7 +28,7 @@
 		"url": "https://github.com/iomariani/vue-player/issues"
 	},
 	"scripts": {
-		"serve": "vue-cli-service serve",
+		"serve": "vue serve 'src/Demo.vue'",
 		"build": "npm run build:wc & npm run build:lib",
 		"build:wc": "vue-cli-service build --target wc 'src/components/VuePlayer.vue'",
 		"build:lib": "vue-cli-service build --target lib 'src/components/VuePlayer.vue'",

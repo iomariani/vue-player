@@ -76,10 +76,10 @@
 </template>
 
 <script>
-import PlayIcon from '../assets/icons/play.svg'
-import PauseIcon from '../assets/icons/pause.svg'
-import SkipBackIcon from '../assets/icons/skip-back.svg'
-import FullscreenIcon from '../assets/icons/maximize.svg'
+import PlayIcon from '../icons/play.svg'
+import PauseIcon from '../icons/pause.svg'
+import SkipBackIcon from '../icons/skip-back.svg'
+import FullscreenIcon from '../icons/maximize.svg'
 
 export default {
 	name: 'vue-player',
