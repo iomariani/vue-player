@@ -19,7 +19,10 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/iomariani/vue-player.git"
+		"url": "git://github.com/iomariani/vue-player.git"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/"
 	},
 	"bugs": {
 		"url": "https://github.com/iomariani/vue-player/issues"
