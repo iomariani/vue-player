@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Custom Fullscreen
 
+## [0.2.1] - 2020-07-30
+
+### Changed
+
+- Make fullscreen overlay blur filter optional (prop _overlayBlur_)
+
 ## [0.2.0] - 2020-07-29
 
 ### Released
@@ -53,7 +59,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First release bundle
 
-[unreleased]: https://github.com/iomariani/vue-player/compare/v0.2.0...HEAD
+[unreleased]: https://github.com/iomariani/vue-player/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/iomariani/vue-player/releases/tag/v0.2.1
 [0.2.0]: https://github.com/iomariani/vue-player/releases/tag/v0.2.0
 [0.1.2]: https://github.com/iomariani/vue-player/releases/tag/v0.1.2
 [0.1.1]: https://github.com/iomariani/vue-player/releases/tag/v0.1.1
