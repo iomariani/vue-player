@@ -2,9 +2,6 @@ $light-color: #e0e0e0;
 $dark-color: #181818;
 
 .player {
-	border-radius: 20px;
-	box-shadow: 0 2px 10px rgba(10, 10, 10, 0.2);
-
 	.player-overlay {
 		position: fixed;
 		top: 0;
@@ -13,9 +10,12 @@ $dark-color: #181818;
 		bottom: 0;
 		width: 100vw;
 		height: 100vh;
-		backdrop-filter: blur(3px);
 		background-color: rgba(0, 0, 0, 0.9);
 		z-index: 1000;
+
+		&.blurred {
+			backdrop-filter: blur(3px);
+		}
 
 		+ .player-wrapper {
 			z-index: 1001;

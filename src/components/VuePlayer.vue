@@ -1,7 +1,7 @@
 <template>
 	<div class="player" :class="{ 'audio-player': audio, 'video-player': video, [`status-${status}`]: true, theater }">
 		<transition name="fade">
-			<div v-if="theater && status === 'playing'" class="player-overlay"></div>
+			<div v-if="theater && status === 'playing'" class="player-overlay" :class="{ blurred: overlayBlur }"></div>
 		</transition>
 
 		<div class="player-wrapper">
@@ -137,6 +137,10 @@ export default {
 			default: true
 		},
 		theater: {
+			type: Boolean,
+			default: false
+		},
+		overlayBlur: {
 			type: Boolean,
 			default: false
 		}
