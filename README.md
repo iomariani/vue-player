@@ -10,7 +10,7 @@
 
 ## Contents
 
-- [Installation](#installation)
+- [Install](#install)
 - [Usage](#usage)
 	- [Globally](#registering-globally)
 	- [Locally](#registering-locally)
@@ -21,10 +21,11 @@
 	- [Video Props](#video-props)
 - [Demo](#demo)
 - [License](#license)
+- [Credits](#credits)
 
 ---
 
-## Installation
+## Install
 
 ```bash
 npm install @iomariani/vue-player
@@ -114,3 +115,7 @@ Available at [codesandbox.io](https://s5mvo.csb.app/) ([sandbox](https://codesan
 ## License
 
 [MIT](https://github.com/iomariani/vue-player/blob/master/LICENSE.md)
+
+## Credits
+
+- Icons by [feathericons.com](https://feathericons.com)
