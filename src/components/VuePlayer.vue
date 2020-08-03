@@ -1,14 +1,29 @@
 <template>
-	<div class="player" :class="{ 'audio-player': audio, 'video-player': video, [`status-${status}`]: true, theater }">
+	<div
+		class="player"
+		:class="{
+			'audio-player': audio,
+			'video-player': video,
+			[`status-${status}`]: true,
+			'fullscreen-custom': fullscreen === 'custom',
+			'fullscreen-active': fullscreenActive,
+			theater
+		}"
+	>
 		<transition name="fade">
-			<div v-if="theater && status === 'playing'" class="player-overlay" :class="{ blurred: overlayBlur }"></div>
+			<div
+				v-if="theater && (status === 'playing' || fullscreenActive)"
+				class="player-overlay"
+				:class="{ blurred: overlayBlur }"
+				:style="`background-color: ${overlayColor}`"
+			></div>
 		</transition>
 
-		<div class="player-wrapper">
+		<div class="player-wrapper" ref="wrapper">
 			<audio
 				v-if="audio === true"
 				preload="auto"
-				:autoplay="autoPlay"
+				:autoplay="autoplay"
 				:loop="loop"
 				@progress="progressListener"
 				@loadeddata="loaded"
@@ -28,7 +43,7 @@
 				:width="videoWidth"
 				:height="videoHeight"
 				preload="auto"
-				:autoplay="autoPlay"
+				:autoplay="autoplay"
 				:loop="loop"
 				:poster="poster"
 				@progress="progressListener"
@@ -61,11 +76,25 @@
 					<span class="player-time-total" aria-label="duration">{{ duration | time }}</span>
 
 					<fullscreen-icon
-						v-if="video === true"
+						v-if="video === true && fullscreen !== 'custom'"
 						aria-label="toggle fullscreen"
 						class="action action-fullscreen"
 						viewBox="0 0 20 25"
-						@click="fullscreen"
+						@click="requestFullscreen"
+					/>
+					<maximize-icon
+						v-else-if="video === true && !fullscreenActive && !autoFullscreen"
+						aria-label="toggle fullscreen"
+						class="action action-fullscreen"
+						viewBox="0 0 20 25"
+						@click="toggleFullscreen"
+					/>
+					<minimize-icon
+						v-else-if="video === true && fullscreenActive && !autoFullscreen"
+						aria-label="toggle fullscreen"
+						class="action action-fullscreen"
+						viewBox="0 0 20 25"
+						@click="toggleFullscreen"
 					/>
 				</div>
 			</div>
@@ -77,6 +106,9 @@
 import PlayIcon from '../icons/play.svg'
 import PauseIcon from '../icons/pause.svg'
 import ReplayIcon from '../icons/replay.svg'
+import FullscreenIcon from '../icons/fullscreen.svg'
+import MaximizeIcon from '../icons/maximize.svg'
+import MinimizeIcon from '../icons/minimize.svg'
 
 export default {
 	name: 'vue-player',
@@ -84,6 +116,9 @@ export default {
 		PlayIcon,
 		PauseIcon,
 		ReplayIcon,
+		FullscreenIcon,
+		MaximizeIcon,
+		MinimizeIcon
 	},
 	props: {
 		audio: {
@@ -105,7 +140,7 @@ export default {
 			type: String,
 			default: 'auto'
 		},
-		autoPlay: {
+		autoplay: {
 			type: Boolean,
 			default: false
 		},
@@ -135,6 +170,18 @@ export default {
 		overlayBlur: {
 			type: Boolean,
 			default: false
+		},
+		overlayColor: {
+			type: String,
+			default: 'rgba(0,0,0,0.9)'
+		},
+		fullscreen: {
+			type: String,
+			default: 'custom'
+		},
+		autoFullscreen: {
+			type: Boolean,
+			default: false
 		}
 	},
 	data() {
@@ -143,7 +190,8 @@ export default {
 			currentTime: 0,
 			duration: 0,
 			buffered: 0,
-			progress: 0
+			progress: 0,
+			fullscreenActive: false
 		}
 	},
 	methods: {
@@ -167,9 +215,9 @@ export default {
 				this.status = 'loaded'
 				this.duration = parseInt(target.duration)
 
-				if (this.autoPlay) this.play()
+				if (this.autoplay) this.play()
 
-				return this.autoPlay
+				return this.autoplay
 			} else {
 				this.error(e)
 			}
@@ -195,6 +243,8 @@ export default {
 
 			this.currentTime = parseInt(target.currentTime)
 			this.progress = (this.currentTime / this.duration) * 100
+
+			if (target.playing) this.status = 'playing'
 		},
 		play() {
 			this.$refs.player.play()
@@ -214,6 +264,8 @@ export default {
 
 				this.status = 'playing'
 			}
+
+			if (this.autoFullscreen) this.toggleFullscreen()
 		},
 		replay() {
 			this.$refs.player.pause()
@@ -221,17 +273,13 @@ export default {
 			this.$refs.player.play()
 		},
 		seek(e) {
-			if (e.target.tagName === 'SPAN') {
-				return
-			}
-
 			const el = e.target.classList.contains('player-progress') ? e.target : e.target.parentNode
 			const rect = el.getBoundingClientRect()
 			const seekPos = (e.clientX - rect.left) / rect.width
 
 			this.$refs.player.currentTime = parseInt(this.duration * seekPos)
 		},
-		fullscreen() {
+		requestFullscreen() {
 			const player = this.$refs.player
 
 			if (player.requestFullscreen) {
@@ -241,6 +289,22 @@ export default {
 			} else if (player.webkitRequestFullScreen) {
 				player.webkitRequestFullScreen()
 			}
+		},
+		toggleFullscreen() {
+			const wrapper = this.$refs.wrapper
+
+			if (this.fullscreenActive) {
+				wrapper.style.transform = ''
+			} else {
+				const scale = Math.min(wrapper.offsetWidth / screen.availWidth, wrapper.offsetHeight / screen.availHeight) * 10.5
+				const scrollHeight = document.documentElement.scrollHeight
+				const centerX = `calc((50vw - 50% - ${wrapper.offsetLeft}px) / ${scale})`
+				const centerY = `calc((${scrollHeight / 2}px - 100% - ${wrapper.offsetTop}px) / ${scale})`
+
+				wrapper.style.transform = `scale(${scale}) translate(${centerX}, ${centerY})`
+			}
+
+			this.fullscreenActive = !this.fullscreenActive
 		}
 	},
 	filters: {
