@@ -45,13 +45,7 @@
 			</video>
 
 			<div class="player-controls">
-				<skip-back-icon
-					v-if="currentTime == duration && duration > 0"
-					aria-label="replay"
-					class="action action-replay"
-					viewBox="0 0 20 25"
-					@click="replay"
-				/>
+				<replay-icon v-if="currentTime == duration && duration > 0" aria-label="replay" class="action action-replay" @click="replay" />
 				<pause-icon v-else-if="status === 'playing'" aria-label="pause" class="action action-pause" viewBox="2 0 20 25" @click="pause" />
 				<play-icon v-else aria-label="play" class="action action-play" viewBox="0 0 20 25" @click="play" />
 
@@ -82,16 +76,14 @@
 <script>
 import PlayIcon from '../icons/play.svg'
 import PauseIcon from '../icons/pause.svg'
-import SkipBackIcon from '../icons/skip-back.svg'
-import FullscreenIcon from '../icons/maximize.svg'
+import ReplayIcon from '../icons/replay.svg'
 
 export default {
 	name: 'vue-player',
 	components: {
 		PlayIcon,
 		PauseIcon,
-		SkipBackIcon,
-		FullscreenIcon
+		ReplayIcon,
 	},
 	props: {
 		audio: {
