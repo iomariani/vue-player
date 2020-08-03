@@ -253,13 +253,18 @@ export default {
 	},
 	filters: {
 		time: function(seconds) {
-			if (!seconds) return '00:00'
+			if (!seconds) return '0:00'
 
 			const dt = new Date(seconds * 1000)
-			const time = dt.toISOString().substr(11, 8)
+			let time = dt.toISOString().substring(11, 19)
 
-			if (dt.getUTCHours() == 0) return time.substring(3)
-			else return time
+			if (dt.getUTCHours() == 0) {
+				time = time.slice(3)
+
+				if (dt.getUTCMinutes() < 10) time = time.slice(1)
+			}
+
+			return time
 		}
 	}
 }
