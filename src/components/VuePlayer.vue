@@ -64,6 +64,21 @@
 				<pause-icon v-else-if="status === 'playing'" aria-label="pause" class="action action-pause" viewBox="2 0 20 25" @click="pause" />
 				<play-icon v-else aria-label="play" class="action action-play" viewBox="0 0 20 25" @click="play" />
 
+				<backwards-icon
+					v-if="video && status === 'playing'"
+					aria-label="back ten seconds"
+					class="action action-backwards"
+					viewBox="0 0 20 25"
+					@click="backwards"
+				/>
+				<forwards-icon
+					v-if="video && status === 'playing'"
+					aria-label="forward ten seconds"
+					class="action action-forwards"
+					viewBox="0 0 20 25"
+					@click="forwards"
+				/>
+
 				<div class="player-tracker">
 					<span class="player-time-current" aria-label="current time">{{ currentTime | time }}</span>
 					<div class="player-progress" @click="seek">
@@ -109,6 +124,8 @@ import ReplayIcon from '../icons/replay.svg'
 import FullscreenIcon from '../icons/fullscreen.svg'
 import MaximizeIcon from '../icons/maximize.svg'
 import MinimizeIcon from '../icons/minimize.svg'
+import BackwardsIcon from '../icons/backwards.svg'
+import ForwardsIcon from '../icons/forwards.svg'
 
 export default {
 	name: 'vue-player',
@@ -118,7 +135,9 @@ export default {
 		ReplayIcon,
 		FullscreenIcon,
 		MaximizeIcon,
-		MinimizeIcon
+		MinimizeIcon,
+		BackwardsIcon,
+		ForwardsIcon
 	},
 	props: {
 		audio: {
@@ -305,6 +324,12 @@ export default {
 			}
 
 			this.fullscreenActive = !this.fullscreenActive
+		},
+		backwards($event, seconds = 10) {
+			this.$refs.player.currentTime -= seconds
+		},
+		forwards($event, seconds = 10) {
+			this.$refs.player.currentTime += seconds
 		}
 	},
 	filters: {
