@@ -174,10 +174,6 @@ export default {
 			type: String,
 			default: '#2f96fd'
 		},
-		seekerColor: {
-			type: String,
-			default: '#2f96fd'
-		},
 		exclusive: {
 			type: Boolean,
 			default: true

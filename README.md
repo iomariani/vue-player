@@ -1,10 +1,8 @@
 # vue-player
 
-> Simple, lightweight, vue.js HTML5 audio/video player
+Simple, lightweight, vue.js HTML5 audio/video player
 
-[![GitHub version](https://badge.fury.io/gh/iomariani%2Fvue-player.svg)](https://badge.fury.io/gh/iomariani%2Fvue-player) [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@iomariani/vue-player.svg?style=flat)](https://bundlephobia.com/result?p=v-emoji-picker@latest) [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg?style=flat)](https://vuejs.org/) [![CodeFactor](https://www.codefactor.io/repository/github/iomariani/vue-player/badge)](https://www.codefactor.io/repository/github/iomariani/vue-player)
-
-![License](https://img.shields.io/github/license/iomariani/vue-player)
+[![GitHub version](https://badge.fury.io/gh/iomariani%2Fvue-player.svg)](https://badge.fury.io/gh/iomariani%2Fvue-player) [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@iomariani/vue-player.svg?style=flat)](https://bundlephobia.com/result?p=v-emoji-picker@latest) [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg?style=flat)](https://vuejs.org/) [![CodeFactor](https://www.codefactor.io/repository/github/iomariani/vue-player/badge)](https://www.codefactor.io/repository/github/iomariani/vue-player) ![License](https://img.shields.io/github/license/iomariani/vue-player)
 
 ---
 
@@ -86,7 +84,6 @@ import '@iomariani/vue-player/dist/vue-player.css'
 - `autoplay`: Boolean, component autoplay, default `false`
 - `loop`: Boolean, set player loop, default `false`
 - `color`: String, color to use at the active trackbar, default `#2f96fd`
-- `seekerColor`: String, color to use on the trackbar seeker when hovering, default `#2f96fd`
 - `theater`: Boolean, wrap the player with an overlay div, default `false`
 - `overlayBlur`: Boolean, add a blur filter effect to the overlay, default `false`
 - `overlayColor`: String, color to use on the overlay div, default `rgba(0, 0, 0, 0.9)`
