@@ -2,6 +2,8 @@ $light-color: #e0e0e0;
 $dark-color: #181818;
 
 .player {
+	width: fit-content;
+
 	.player-overlay {
 		position: fixed;
 		top: 0;
@@ -24,7 +26,6 @@ $dark-color: #181818;
 	.player-wrapper {
 		-webkit-mask-image: -webkit-radial-gradient(white, black);
 		mask-image: linear-gradient(white, black);
-
 		background-color: rgba($light-color, 0.3);
 		border-radius: 20px;
 		position: relative;
@@ -120,6 +121,8 @@ $dark-color: #181818;
 }
 
 .audio-player {
+	width: 100%;
+
 	&.theater {
 		&.status-playing {
 			.player-wrapper {
@@ -165,7 +168,7 @@ $dark-color: #181818;
 	&.fullscreen-custom {
 		.player-wrapper {
 			transition: transform 0.5s;
-			transform-origin: center top;
+			transform-origin: left top;
 		}
 	}
 

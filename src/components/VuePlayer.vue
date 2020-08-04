@@ -21,7 +21,7 @@
 
 		<div class="player-wrapper" ref="wrapper">
 			<audio
-				v-if="audio === true"
+				v-if="audio"
 				preload="auto"
 				:autoplay="autoplay"
 				:loop="loop"
@@ -39,7 +39,7 @@
 			</audio>
 
 			<video
-				v-if="video === true"
+				v-if="video"
 				:width="videoWidth"
 				:height="videoHeight"
 				preload="auto"
@@ -311,16 +311,17 @@ export default {
 		},
 		toggleFullscreen() {
 			const wrapper = this.$refs.wrapper
+			const player = this.$refs.player
 
 			if (this.fullscreenActive) {
 				wrapper.style.transform = ''
 			} else {
-				const scale = Math.min(wrapper.offsetWidth / screen.availWidth, wrapper.offsetHeight / screen.availHeight) * 10.5
-				const scrollHeight = document.documentElement.scrollHeight
-				const centerX = `calc((50vw - 50% - ${wrapper.offsetLeft}px) / ${scale})`
-				const centerY = `calc((${scrollHeight / 2}px - 100% - ${wrapper.offsetTop}px) / ${scale})`
+				const playerRect = player.getBoundingClientRect()
+				const scale = Math.min(window.innerWidth / player.offsetWidth, window.innerHeight / player.offsetHeight) * 0.85
+				const centerX = (window.innerWidth / 2 - (playerRect.width * scale) / 2 - playerRect.left) / scale
+				const centerY = (window.innerHeight / 2 - (playerRect.height * scale) / 2 - playerRect.top) / scale
 
-				wrapper.style.transform = `scale(${scale}) translate(${centerX}, ${centerY})`
+				wrapper.style.transform = `scale(${scale}) translate(${centerX}px, ${centerY}px)`
 			}
 
 			this.fullscreenActive = !this.fullscreenActive

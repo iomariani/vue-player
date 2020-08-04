@@ -35,22 +35,10 @@ export default {
 .container {
 	width: 500px;
 	margin: 0 auto;
-
-	.player {
-		margin-bottom: 2em;
-	}
 }
 
-.row {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	justify-content: center;
-
-	.col {
-		width: 25%;
-		margin: 0 2em;
-	}
+.player {
+	margin: 0 auto 2em;
 }
 
 #app {
