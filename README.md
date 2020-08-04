@@ -2,7 +2,7 @@
 
 Simple, lightweight, vue.js HTML5 audio/video player
 
-[![GitHub version](https://badge.fury.io/gh/iomariani%2Fvue-player.svg)](https://badge.fury.io/gh/iomariani%2Fvue-player) [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@iomariani/vue-player.svg?style=flat)](https://bundlephobia.com/result?p=v-emoji-picker@latest) [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg?style=flat)](https://vuejs.org/) [![CodeFactor](https://www.codefactor.io/repository/github/iomariani/vue-player/badge)](https://www.codefactor.io/repository/github/iomariani/vue-player) ![License](https://img.shields.io/github/license/iomariani/vue-player)
+[![GitHub version](https://badge.fury.io/gh/iomariani%2Fvue-player.svg)](https://badge.fury.io/gh/iomariani%2Fvue-player) [![bundlephobia](https://img.shields.io/bundlephobia/minzip/@iomariani/vue-player.svg?style=flat)](https://bundlephobia.com/result?p=@iomariani/vue-player) [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg?style=flat)](https://vuejs.org/) [![CodeFactor](https://www.codefactor.io/repository/github/iomariani/vue-player/badge)](https://www.codefactor.io/repository/github/iomariani/vue-player) ![License](https://img.shields.io/github/license/iomariani/vue-player)
 
 ---
 
