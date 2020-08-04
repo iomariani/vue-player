@@ -1,7 +1,7 @@
 {
 	"name": "@iomariani/vue-player",
 	"description": "Vue.js HTML5 Audio/Video Player",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"private": false,
 	"author": {
 		"name": "Marcos Mariani",
@@ -32,6 +32,7 @@
 		"build": "npm run build:wc & npm run build:lib",
 		"build:wc": "vue-cli-service build --target wc 'src/components/VuePlayer.vue'",
 		"build:lib": "vue-cli-service build --target lib 'src/components/VuePlayer.vue'",
+		"prepublish": "npm run build",
 		"lint": "vue-cli-service lint"
 	},
 	"main": "dist/vue-player.common.js",

@@ -103,7 +103,10 @@ import '@iomariani/vue-player/dist/vue-player.css'
 - `videoWidth`: String, set video width, default `100%`
 - `videoHeight`: String, set video height, default `auto`
 - `poster`: String, url of the poster image to use
-- `fullscreen`: String, type of fullscreen to use, default `custom` - `custom`: Scale and center the player to the viewport. - `native`: Use browser native `requestFullscreen` method.
+- `fullscreen`: String, type of fullscreen to use, default `both`
+	- `custom`: Scale and center the player to the viewport.
+	- `native`: Use browser native `requestFullscreen` method.
+	- `both`: Enables both `custom` and `native`.
 - `autoFullscreen`: Boolean, active fullscreen mode on play
 - `sources`: Object, key value with type: source
 	- **Example**: `{ "video/mp4": "//localhost/video.mp4" }`
