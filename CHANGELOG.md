@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Volume slider
 - Trackbar seeker on drag
 
+## [0.4.1] - 2020-08-04
+
+### Fixed
+
+- Fullscreen `custom` scale and offset calculations
+
 ## [0.4.0] - 2020-08-03
 
 ### Released
@@ -92,7 +98,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First release bundle
 
-[unreleased]: https://github.com/iomariani/vue-player/compare/v0.4.0...HEAD
+[unreleased]: https://github.com/iomariani/vue-player/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/iomariani/vue-player/releases/tag/v0.4.1
 [0.4.0]: https://github.com/iomariani/vue-player/releases/tag/v0.4.0
 [0.3.0]: https://github.com/iomariani/vue-player/releases/tag/v0.3.0
 [0.2.1]: https://github.com/iomariani/vue-player/releases/tag/v0.2.1
