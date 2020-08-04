@@ -17,6 +17,7 @@ Simple, lightweight, vue.js HTML5 audio/video player
 	- [HTML](#html)
 - [Props](#props)
 	- [Sources](#sources)
+- [Todo](#todo)
 - [Credits](#credits)
 - [Author](#author)
 - [License](#license)
@@ -108,12 +109,12 @@ Param | Type | Description | Default
 `sources`|`Object`|[Declaration example below](#sources)
 **Fullscreen Types**|
 `native`||Browser native `requestFullscreen` method
-`custom`||Custom function to scale the player to the viewport
-`both`||Enable both `native` and `custom` methods
+`scale`||Scale the player to the viewport
+`both`||Enable both `native` and `scale` methods
 
 ### Sources
 
-Sources must be declared as an object with the `key` as the type. Example:
+Sources must be declared as an object as `type`:`source`. Example:
 ```js
 const audioSources = {
 	"audio/mp3": "//localhost/music.mp3",
@@ -126,6 +127,17 @@ const videoSources = {
 	...
 };
 ```
+
+## Todo
+
+- [ ] Loading/buffering icon
+- [ ] Volume slider
+- [ ] Trackbar seeker on drag
+- [x] Skip forward 10s
+- [x] Skip backwards 10s
+- [x] Custom Fullscreen
+- [x] Theater Mode
+- [x] Exclusive Mode
 
 ## Credits
 
