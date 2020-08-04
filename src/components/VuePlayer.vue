@@ -5,7 +5,6 @@
 			'audio-player': audio,
 			'video-player': video,
 			[`status-${status}`]: true,
-			'fullscreen-custom': fullscreen !== 'native',
 			'fullscreen-active': fullscreenActive,
 			theater
 		}"
@@ -188,7 +187,7 @@ export default {
 		},
 		overlayColor: {
 			type: String,
-			default: 'rgba(0,0,0,0.9)'
+			default: '#000000e6'
 		},
 		fullscreen: {
 			type: String,
@@ -314,10 +313,10 @@ export default {
 			} else {
 				const playerRect = player.getBoundingClientRect()
 				const scale = Math.min(window.innerWidth / player.offsetWidth, window.innerHeight / player.offsetHeight) * 0.85
-				const centerX = (window.innerWidth / 2 - (playerRect.width * scale) / 2 - playerRect.left) / scale
-				const centerY = (window.innerHeight / 2 - (playerRect.height * scale) / 2 - playerRect.top) / scale
+				const centerX = window.innerWidth / 2 - (playerRect.width * scale) / 2 - playerRect.left
+				const centerY = window.innerHeight / 2 - (playerRect.height * scale) / 2 - playerRect.top
 
-				wrapper.style.transform = `scale(${scale}) translate(${centerX}px, ${centerY}px)`
+				wrapper.style.transform = `translate(${centerX}px, ${centerY}px) scale(${scale})`
 			}
 
 			this.fullscreenActive = !this.fullscreenActive

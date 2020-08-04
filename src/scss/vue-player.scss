@@ -29,7 +29,8 @@ $dark-color: #181818;
 		background-color: rgba($light-color, 0.3);
 		border-radius: 20px;
 		position: relative;
-		transition: background-color 0.3s;
+		transition: background-color 0.3s, transform 0.5s;
+		transform-origin: left top;
 	}
 
 	.player-controls {
@@ -163,13 +164,6 @@ $dark-color: #181818;
 		display: block;
 		object-fit: cover;
 		object-position: center;
-	}
-
-	&.fullscreen-custom {
-		.player-wrapper {
-			transition: transform 0.5s;
-			transform-origin: left top;
-		}
 	}
 
 	.player-controls {
