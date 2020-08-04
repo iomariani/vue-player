@@ -5,7 +5,7 @@
 			'audio-player': audio,
 			'video-player': video,
 			[`status-${status}`]: true,
-			'fullscreen-custom': fullscreen === 'custom',
+			'fullscreen-custom': fullscreen !== 'native',
 			'fullscreen-active': fullscreenActive,
 			theater
 		}"
@@ -75,26 +75,26 @@
 					</div>
 					<span class="player-time-total" aria-label="duration">{{ duration | time }}</span>
 
-					<fullscreen-icon
-						v-if="video === true && fullscreen !== 'custom'"
-						aria-label="toggle fullscreen"
-						class="action action-fullscreen"
-						viewBox="0 0 20 25"
-						@click="requestFullscreen"
-					/>
 					<maximize-icon
-						v-else-if="video === true && !fullscreenActive && !autoFullscreen"
+						v-if="video && !fullscreenActive && !autoFullscreen"
 						aria-label="toggle fullscreen"
 						class="action action-fullscreen"
 						viewBox="0 0 20 25"
 						@click="toggleFullscreen"
 					/>
 					<minimize-icon
-						v-else-if="video === true && fullscreenActive && !autoFullscreen"
+						v-else-if="video && fullscreenActive && !autoFullscreen"
 						aria-label="toggle fullscreen"
 						class="action action-fullscreen"
 						viewBox="0 0 20 25"
 						@click="toggleFullscreen"
+					/>
+					<fullscreen-icon
+						v-if="video && !autoFullscreen && (fullscreen == 'native' || fullscreen == 'both')"
+						aria-label="toggle fullscreen"
+						class="action action-fullscreen"
+						viewBox="0 0 20 25"
+						@click="requestFullscreen"
 					/>
 				</div>
 			</div>
@@ -177,7 +177,7 @@ export default {
 		},
 		fullscreen: {
 			type: String,
-			default: 'custom'
+			default: 'both'
 		},
 		autoFullscreen: {
 			type: Boolean,
