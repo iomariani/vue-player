@@ -6,20 +6,26 @@ Simple, lightweight, vue.js HTML5 audio/video player
 
 ---
 
-## Contents
+## Table of Contents
 
+- [Demo](#demo)
 - [Install](#install)
 - [Usage](#usage)
-	- [Globally](#registering-globally)
-	- [Locally](#registering-locally)
+	- [Global](#rglobal)
+	- [Local](#local)
 	- [CSS](#css)
 	- [HTML](#html)
 - [Props](#props)
-	- [Audio Props](#audio-props)
-	- [Video Props](#video-props)
-- [Demo](#demo)
-- [License](#license)
+	- [Sources](#sources)
 - [Credits](#credits)
+- [Author](#author)
+- [License](#license)
+
+---
+
+## Demo
+
+Available at [codesandbox.io](https://s5mvo.csb.app/) ([sandbox](https://codesandbox.io/s/vue-player-s5mvo))
 
 ---
 
@@ -31,7 +37,7 @@ npm install @iomariani/vue-player
 
 ## Usage
 
-### Registering Globally
+### Global
 
 If you want the component to be available globally:
 
@@ -42,7 +48,7 @@ import VuePlayer from '@iomariani/vue-player'
 Vue.component('vue-player', VuePlayer)
 ```
 
-### Registering Locally
+### Local
 
 If you want the component to be available locally:
 
@@ -80,42 +86,55 @@ import '@iomariani/vue-player/dist/vue-player.css'
 
 ## Props
 
-- `exclusive`: Boolean, only allow one player playing at a time, default `true`
-- `autoplay`: Boolean, component autoplay, default `false`
-- `loop`: Boolean, set player loop, default `false`
-- `color`: String, color to use at the active trackbar, default `#2f96fd`
-- `theater`: Boolean, wrap the player with an overlay div, default `false`
-- `overlayBlur`: Boolean, add a blur filter effect to the overlay, default `false`
-- `overlayColor`: String, color to use on the overlay div, default `rgba(0, 0, 0, 0.9)`
+Param | Type | Description | Default
+--- |:---:| --- |:---:
+`exclusive`|`Boolean`|Allow only one player playing at a time|`true`
+`autoplay`|`Boolean`|Audio/video autoplay property|`false`
+`loop`|`Boolean`|Audio/video loop property|`false`
+`color`|`String`|Color to use at the active trackbar|`#2f96fd`
+`theater`|`Boolean`|Wrap the player with an overlay div|`false`
+`overlayBlur`|`Boolean`|Add a blur filter effect to the overlay|`false`
+`overlayColor`|`String`|Color to use on the overlay div|`#000000e6`
+**Audio Props**|
+`audio`|`Boolean`|Set player type as audio|`false`
+`sources`|`Object`|[Declaration example below](#sources)
+**Video Props**|
+`video`|`Boolean`|Set player type as video|`false`
+`videoWidth`|`String`|Video width|`100%`
+`videoHeight`|`String`|Video height|`auto`
+`poster`|`String`|URL of the poster image
+`fullscreen`|`String`|Type of fullscreen to use. See types below|`both`
+`autoFullscreen`|`Boolean`|Active fullscreen mode on play|`false`
+`sources`|`Object`|[Declaration example below](#sources)
+**Fullscreen Types**|
+`native`||Browser native `requestFullscreen` method
+`custom`||Custom function to scale the player to the viewport
+`both`||Enable both `native` and `custom` methods
 
-### Audio Props
+### Sources
 
-- `audio` - Boolean, set player type as audio
-- `sources`: Object, key value with type: source
-	- **Example**: `{ "audio/mp3": "//localhost/audio.mp3" }`
+Sources must be declared as an object with the `key` as the type. Example:
+```js
+const audioSources = {
+	"audio/mp3": "//localhost/music.mp3",
+	...
+};
 
-### Video Props
-
-- `video`: Boolean, set player type as video
-- `videoWidth`: String, set video width, default `100%`
-- `videoHeight`: String, set video height, default `auto`
-- `poster`: String, url of the poster image to use
-- `fullscreen`: String, type of fullscreen to use, default `both`
-	- `custom`: Scale and center the player to the viewport.
-	- `native`: Use browser native `requestFullscreen` method.
-	- `both`: Enables both `custom` and `native`.
-- `autoFullscreen`: Boolean, active fullscreen mode on play
-- `sources`: Object, key value with type: source
-	- **Example**: `{ "video/mp4": "//localhost/video.mp4" }`
-
-## Demo
-
-Available at [codesandbox.io](https://s5mvo.csb.app/) ([sandbox](https://codesandbox.io/s/vue-player-s5mvo))
-
-## License
-
-[MIT](https://github.com/iomariani/vue-player/blob/master/LICENSE.md)
+const videoSources = {
+	"video/mp4": "//localhost/video.mp4",
+	"video/webm": "//localhost/video.webm",
+	...
+};
+```
 
 ## Credits
 
 - Icons by [feathericons.com](https://feathericons.com)
+
+## Author
+
+- [Marcos Mariani](https://github.com/iomariani)
+
+## License
+
+[MIT](https://github.com/iomariani/vue-player/blob/master/LICENSE.md)
