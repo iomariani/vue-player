@@ -14,7 +14,7 @@ $player-fullscreen-z-index: 100000 !default;
 		bottom: 0;
 		width: 100vw;
 		height: 100vh;
-		z-index: 1000;
+		z-index: $player-fullscreen-z-index;
 
 		&.blurred {
 			backdrop-filter: blur(3px);
@@ -288,10 +288,6 @@ $player-fullscreen-z-index: 100000 !default;
 	}
 
 	&.fullscreen-active {
-		.player-overlay {
-			z-index: $player-fullscreen-z-index;
-		}
-
 		.player-wrapper {
 			z-index: $player-fullscreen-z-index + 1;
 		}
