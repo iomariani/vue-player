@@ -1,7 +1,7 @@
 {
 	"name": "@iomariani/vue-player",
 	"description": "Vue.js HTML5 Audio/Video Player",
-	"version": "0.4.2",
+	"version": "0.4.3",
 	"private": false,
 	"author": {
 		"name": "Marcos Mariani",
