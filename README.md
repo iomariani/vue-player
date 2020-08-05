@@ -147,7 +147,7 @@ $var | default
 `$player-background`|`#f0f0f0`
 `$player-border-radius`|`20px`
 `$player-buffer-background` | `#ffffff33`
-`$player-fullscreen-z-index` | `10000`
+`$player-fullscreen-z-index` | `100000`
 
 ## Todo
 
