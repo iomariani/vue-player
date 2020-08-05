@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Volume slider
 - Trackbar seeker on drag
 
+## [0.4.6] - 2020-08-04
+
+### Fixed
+
+- Set default `.player-overlay` z-index for `theater` mode
+
 ## [0.4.5] - 2020-08-04
 
 ### Changed
@@ -127,7 +133,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First release bundle
 
-[unreleased]: https://github.com/iomariani/vue-player/compare/v0.4.5...HEAD
+[unreleased]: https://github.com/iomariani/vue-player/compare/v0.4.6...HEAD
+[0.4.6]: https://github.com/iomariani/vue-player/releases/tag/v0.4.6
 [0.4.5]: https://github.com/iomariani/vue-player/releases/tag/v0.4.5
 [0.4.4]: https://github.com/iomariani/vue-player/releases/tag/v0.4.4
 [0.4.3]: https://github.com/iomariani/vue-player/releases/tag/v0.4.3
