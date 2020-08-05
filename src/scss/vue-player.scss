@@ -21,7 +21,7 @@ $player-fullscreen-z-index: 100000 !default;
 		}
 
 		+ .player-wrapper {
-			z-index: 1001;
+			z-index: $player-fullscreen-z-index + 1;
 		}
 	}
 
