@@ -1,5 +1,7 @@
-$light-color: #e0e0e0;
-$dark-color: #181818;
+$player-background: #f0f0f0;
+$player-border-radius: 20px;
+$player-buffer-background: #ffffff33;
+$player-fullscreen-z-index: 10000;
 
 .player {
 	width: fit-content;
@@ -26,8 +28,8 @@ $dark-color: #181818;
 	.player-wrapper {
 		-webkit-mask-image: -webkit-radial-gradient(white, black);
 		mask-image: linear-gradient(white, black);
-		background-color: rgba($light-color, 0.3);
-		border-radius: 20px;
+		background-color: $player-background;
+		border-radius: $player-border-radius;
 		position: relative;
 		transition: background-color 0.3s, transform 0.5s;
 		transform-origin: left top;
@@ -77,7 +79,7 @@ $dark-color: #181818;
 		height: 5px;
 		cursor: pointer;
 		position: relative;
-		background-color: rgba($light-color, 1);
+		background-color: darken($player-background, 10);
 		border-radius: 5px;
 
 		.player-progress-wrapper {
@@ -90,7 +92,7 @@ $dark-color: #181818;
 			top: 0;
 			left: 0;
 			border-radius: 5px;
-			background-color: rgba(255, 255, 255, 0.2);
+			background-color: $player-buffer-background;
 		}
 
 		.player-seeker {
@@ -117,7 +119,7 @@ $dark-color: #181818;
 		opacity: 0;
 		top: -2.5px;
 		margin-left: -2.5px;
-		box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 0 5px #0000001a;
 	}
 }
 
@@ -127,7 +129,7 @@ $dark-color: #181818;
 	&.theater {
 		&.status-playing {
 			.player-wrapper {
-				background-color: rgba(255, 255, 255, 0.9);
+				background-color: rgba($player-background, 1);
 			}
 		}
 	}
@@ -140,6 +142,7 @@ $dark-color: #181818;
 			width: 13px;
 			height: 13px;
 			padding: 5px;
+			box-sizing: content-box;
 			transition: transform 0.2s;
 
 			&:hover {
@@ -265,6 +268,14 @@ $dark-color: #181818;
 	}
 
 	&.status-playing {
+		.player-wrapper {
+			&:hover {
+				.action {
+					opacity: 1;
+				}
+			}
+		}
+
 		.player-controls {
 			&:not(:hover) {
 				background-color: transparent;
@@ -274,11 +285,15 @@ $dark-color: #181818;
 				opacity: 0;
 			}
 		}
+	}
 
-		.player-wrapper:hover {
-			.action {
-				opacity: 1;
-			}
+	&.fullscreen-active {
+		.player-overlay {
+			z-index: $player-fullscreen-z-index;
+		}
+
+		.player-wrapper {
+			z-index: $player-fullscreen-z-index + 1;
 		}
 	}
 }

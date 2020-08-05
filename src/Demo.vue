@@ -3,7 +3,7 @@
 		<h1>Vue.js Audio/Video Player</h1>
 
 		<div class="container">
-			<vue-player audio :sources="audioSources" />
+			<vue-player audio theater :sources="audioSources" />
 			<vue-player video theater :sources="videoSources" />
 		</div>
 	</div>
@@ -20,7 +20,7 @@ export default {
 	data() {
 		return {
 			audioSources: {
-				'audio/mp3': 'https://www.bensound.com/bensound-music/bensound-scifi.mp3'
+				'audio/mp3': 'https://www.bensound.com/bensound-music/bensound-littleplanet.mp3'
 			},
 			videoSources: {
 				'video/mp4': 'https://mdn.github.io/learning-area/javascript/apis/video-audio/finished/video/sintel-short.mp4',

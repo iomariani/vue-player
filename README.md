@@ -17,6 +17,8 @@ Simple, lightweight, vue.js HTML5 audio/video player
 	- [HTML](#html)
 - [Props](#props)
 	- [Sources](#sources)
+- [Styling](#styling)
+	- [Available Variables](#available-variables)
 - [Todo](#todo)
 - [Credits](#credits)
 - [Author](#author)
@@ -127,6 +129,25 @@ const videoSources = {
 	...
 };
 ```
+
+## Styling
+
+If you want to style the player you can do so by importing the scss file:
+
+```html
+<style lang="scss">
+@import '@iomariani/vue-player/src/scss/vue-player.scss';
+</style>
+```
+
+### Available Variables
+
+$var | default
+---|---:|
+`$player-background`|`#f0f0f0`
+`$player-border-radius`|`20px`
+`$player-buffer-background` | `#ffffff33`
+`$player-fullscreen-z-index` | `10000`
 
 ## Todo
 
