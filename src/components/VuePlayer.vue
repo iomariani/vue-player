@@ -200,6 +200,10 @@ export default {
 		autoFullscreen: {
 			type: Boolean,
 			default: false
+		},
+		viewport: {
+			type: Function,
+			default: () => window
 		}
 	},
 	data() {
@@ -315,10 +319,27 @@ export default {
 			if (this.fullscreenActive) {
 				wrapper.style.transform = ''
 			} else {
+				const $viewport = this.viewport.call()
+				let viewport
+
+				if ($viewport instanceof Window) {
+					viewport = {
+						width: window.innerWidth,
+						height: window.innerHeight
+					}
+				} else {
+					viewport = $viewport.getBoundingClientRect()
+				}
+
 				const playerRect = player.getBoundingClientRect()
-				const scale = Math.min(window.innerWidth / player.offsetWidth, window.innerHeight / player.offsetHeight) * 0.85
-				const centerX = window.innerWidth / 2 - (playerRect.width * scale) / 2 - playerRect.left
-				const centerY = window.innerHeight / 2 - (playerRect.height * scale) / 2 - playerRect.top
+				const scale = Math.min(viewport.width / player.offsetWidth, viewport.height / player.offsetHeight) * 0.85
+				let centerX = viewport.width / 2 - (playerRect.width * scale) / 2 - playerRect.left
+				let centerY = viewport.height / 2 - (playerRect.height * scale) / 2 - playerRect.top
+
+				if ($viewport instanceof HTMLElement) {
+					centerX += viewport.left
+					centerY += viewport.top
+				}
 
 				wrapper.style.transform = `translate(${centerX}px, ${centerY}px) scale(${scale})`
 			}
