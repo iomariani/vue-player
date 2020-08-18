@@ -93,21 +93,21 @@
 
 					<template v-if="video">
 						<maximize-icon
-							v-if="!fullscreenActive && !autoFullscreen && fullscreen !== 'native'"
+							v-if="!fullscreenActive && !autoFullscreen && fullscreenOption !== 'native'"
 							aria-label="toggle fullscreen"
 							class="action action-fullscreen"
 							viewBox="0 0 20 25"
 							@click="toggleFullscreen"
 						/>
 						<minimize-icon
-							v-else-if="fullscreenActive && !autoFullscreen && fullscreen !== 'native'"
+							v-else-if="fullscreenActive && !autoFullscreen && fullscreenOption !== 'native'"
 							aria-label="toggle fullscreen"
 							class="action action-fullscreen"
 							viewBox="0 0 20 25"
 							@click="toggleFullscreen"
 						/>
 						<fullscreen-icon
-							v-if="!autoFullscreen && fullscreen !== 'scale'"
+							v-if="!autoFullscreen && fullscreenOption !== 'scale'"
 							aria-label="toggle fullscreen"
 							class="action action-fullscreen"
 							viewBox="0 0 20 25"
@@ -216,6 +216,15 @@ export default {
 			fullscreenActive: false
 		}
 	},
+	computed: {
+		fullscreenOption() {
+			const ua = navigator.userAgent
+			const isMobile = /Android|webOS|iPhone|iPad|iPod/i.test(ua)
+
+			if (isMobile) return 'native'
+			else return this.fullscreen
+		}
+	},
 	methods: {
 		progressListener(e) {
 			const player = e.target
@@ -287,7 +296,10 @@ export default {
 				this.status = 'playing'
 			}
 
-			if (this.autoFullscreen) this.toggleFullscreen()
+			if (this.autoFullscreen) {
+				if (this.fullscreenOption === 'native') this.requestFullscreen()
+				else this.toggleFullscreen()
+			}
 		},
 		replay() {
 			this.$refs.player.pause()
