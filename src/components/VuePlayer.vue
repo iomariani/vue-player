@@ -63,20 +63,22 @@
 				<pause-icon v-else-if="status === 'playing'" aria-label="pause" class="action action-pause" viewBox="2 0 20 25" @click="pause" />
 				<play-icon v-else aria-label="play" class="action action-play" viewBox="0 0 20 25" @click="play" />
 
-				<backwards-icon
-					v-if="video && status === 'playing'"
-					aria-label="back ten seconds"
-					class="action action-backwards"
-					viewBox="0 0 20 25"
-					@click="backwards"
-				/>
-				<forwards-icon
-					v-if="video && status === 'playing'"
-					aria-label="forward ten seconds"
-					class="action action-forwards"
-					viewBox="0 0 20 25"
-					@click="forwards"
-				/>
+				<template v-if="video">
+					<backwards-icon
+						v-if="status === 'playing'"
+						aria-label="back ten seconds"
+						class="action action-backwards"
+						viewBox="0 0 20 25"
+						@click="backwards"
+					/>
+					<forwards-icon
+						v-if="status === 'playing'"
+						aria-label="forward ten seconds"
+						class="action action-forwards"
+						viewBox="0 0 20 25"
+						@click="forwards"
+					/>
+				</template>
 
 				<div class="player-tracker">
 					<span class="player-time-current" aria-label="current time">{{ currentTime | time }}</span>
@@ -89,27 +91,29 @@
 					</div>
 					<span class="player-time-total" aria-label="duration">{{ duration | time }}</span>
 
-					<maximize-icon
-						v-if="video && !fullscreenActive && !autoFullscreen"
-						aria-label="toggle fullscreen"
-						class="action action-fullscreen"
-						viewBox="0 0 20 25"
-						@click="toggleFullscreen"
-					/>
-					<minimize-icon
-						v-else-if="video && fullscreenActive && !autoFullscreen"
-						aria-label="toggle fullscreen"
-						class="action action-fullscreen"
-						viewBox="0 0 20 25"
-						@click="toggleFullscreen"
-					/>
-					<fullscreen-icon
-						v-if="video && !autoFullscreen && (fullscreen == 'native' || fullscreen == 'both')"
-						aria-label="toggle fullscreen"
-						class="action action-fullscreen"
-						viewBox="0 0 20 25"
-						@click="requestFullscreen"
-					/>
+					<template v-if="video">
+						<maximize-icon
+							v-if="!fullscreenActive && !autoFullscreen && fullscreen !== 'native'"
+							aria-label="toggle fullscreen"
+							class="action action-fullscreen"
+							viewBox="0 0 20 25"
+							@click="toggleFullscreen"
+						/>
+						<minimize-icon
+							v-else-if="fullscreenActive && !autoFullscreen && fullscreen !== 'native'"
+							aria-label="toggle fullscreen"
+							class="action action-fullscreen"
+							viewBox="0 0 20 25"
+							@click="toggleFullscreen"
+						/>
+						<fullscreen-icon
+							v-if="!autoFullscreen && fullscreen !== 'scale'"
+							aria-label="toggle fullscreen"
+							class="action action-fullscreen"
+							viewBox="0 0 20 25"
+							@click="requestFullscreen"
+						/>
+					</template>
 				</div>
 			</div>
 		</div>
