@@ -109,6 +109,7 @@ Param | Type | Description | Default
 `fullscreen`|`String`|Type of fullscreen to use. See types below|`both`
 `autoFullscreen`|`Boolean`|Active fullscreen mode on play|`false`
 `sources`|`Object`|[Declaration example below](#sources)
+`viewport`|`Function`|Element to scale to|`window`
 **Fullscreen Types**|
 `native`||Browser native `requestFullscreen` method
 `scale`||Scale the player to the viewport
@@ -154,9 +155,10 @@ $var | default
 - [ ] Loading/buffering icon
 - [ ] Volume slider
 - [ ] Trackbar seeker on drag
+- [x] Viewport Prop for `scale` fullscreen
 - [x] Skip forward 10s
 - [x] Skip backwards 10s
-- [x] Custom Fullscreen
+- [x] Custom Fullscreen `scale`
 - [x] Theater Mode
 - [x] Exclusive Mode
 

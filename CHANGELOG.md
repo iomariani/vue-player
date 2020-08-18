@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Volume slider
 - Trackbar seeker on drag
 
+## [0.5.2] - 2020-08-18
+
+### Added
+
+- Viewport prop for fullscreen `scale` option
+- Force fullscreen to `native` if is on mobile
+
+### Fixed
+
+- Hide `scale` fullscreen option when `native` is set
+
 ## [0.4.7] - 2020-08-04
 
 ### Fixed
@@ -139,7 +150,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First release bundle
 
-[unreleased]: https://github.com/iomariani/vue-player/compare/v0.4.7...HEAD
+[unreleased]: https://github.com/iomariani/vue-player/compare/v0.5.2...HEAD
+[0.5.2]: https://github.com/iomariani/vue-player/releases/tag/v0.5.2
 [0.4.7]: https://github.com/iomariani/vue-player/releases/tag/v0.4.7
 [0.4.6]: https://github.com/iomariani/vue-player/releases/tag/v0.4.6
 [0.4.5]: https://github.com/iomariani/vue-player/releases/tag/v0.4.5
