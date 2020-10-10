@@ -95,7 +95,7 @@ Param | Type | Description | Default
 `autoplay`|`Boolean`|Audio/video autoplay property|`false`
 `loop`|`Boolean`|Audio/video loop property|`false`
 `color`|`String`|Color to use at the active trackbar|`#2f96fd`
-`theater`|`Boolean`|Wrap the player with an overlay div|`false`
+`theater`|`Boolean` or `String ("fullscreen")`|Wrap the player with an overlay div, if param is `fullscreen` will show overlay only when in fullscreen|`false`
 `overlayBlur`|`Boolean`|Add a blur filter effect to the overlay|`false`
 `overlayColor`|`String`|Color to use on the overlay div|`#000000e6`
 **Audio Props**|
@@ -155,6 +155,7 @@ $var | default
 - [ ] Loading/buffering icon
 - [ ] Volume slider
 - [ ] Trackbar seeker on drag
+- [ ] Emmit player events
 - [x] Viewport Prop for `scale` fullscreen
 - [x] Skip forward 10s
 - [x] Skip backwards 10s

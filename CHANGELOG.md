@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Volume slider
 - Trackbar seeker on drag
 
+## [0.5.3] - 2020-10-09
+
+### Added
+
+- Theater prop as `fullscreen` to enable only when fullscreen is active
+
 ## [0.5.2] - 2020-08-18
 
 ### Added
@@ -150,7 +156,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First release bundle
 
-[unreleased]: https://github.com/iomariani/vue-player/compare/v0.5.2...HEAD
+[unreleased]: https://github.com/iomariani/vue-player/compare/v0.5.3...HEAD
+[0.5.3]: https://github.com/iomariani/vue-player/releases/tag/v0.5.3
 [0.5.2]: https://github.com/iomariani/vue-player/releases/tag/v0.5.2
 [0.4.7]: https://github.com/iomariani/vue-player/releases/tag/v0.4.7
 [0.4.6]: https://github.com/iomariani/vue-player/releases/tag/v0.4.6

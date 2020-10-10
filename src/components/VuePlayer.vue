@@ -10,12 +10,7 @@
 		}"
 	>
 		<transition name="fade">
-			<div
-				v-if="theater && (status === 'playing' || fullscreenActive)"
-				class="player-overlay"
-				:class="{ blurred: overlayBlur }"
-				:style="`background-color: ${overlayColor}`"
-			></div>
+			<div v-if="overlayVisible" class="player-overlay" :class="{ blurred: overlayBlur }" :style="`background-color: ${overlayColor}`"></div>
 		</transition>
 
 		<div class="player-wrapper" ref="wrapper">
@@ -182,7 +177,7 @@ export default {
 			default: true
 		},
 		theater: {
-			type: Boolean,
+			type: [Boolean, String],
 			default: false
 		},
 		overlayBlur: {
@@ -223,6 +218,15 @@ export default {
 
 			if (isMobile) return 'native'
 			else return this.fullscreen
+		},
+		overlayVisible() {
+			if (this.theater === 'fullscreen' && this.fullscreenActive) {
+				return true
+			} else if (this.theater === true && (status === 'playing' || this.fullscreenActive)) {
+				return true
+			} else {
+				return false
+			}
 		}
 	},
 	methods: {
